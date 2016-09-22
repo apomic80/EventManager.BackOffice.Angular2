@@ -15,8 +15,8 @@
         <tr *ngFor="let event of eventList">
             <td>{{ event.id }}</td>
             <td>{{ event.name }}</td>
-            <td>{{ event.startDate }}</td>
-            <td>{{ event.endDate }}</td>
+            <td>{{ event.startDate | date }}</td>
+            <td>{{ event.endDate | date }}</td>
             <td>{{ event.visible }}</td>
             <td>
                 <button class="btn btn-small btn-warning" (click)="editEvent(event)"><i class="glyphicon glyphicon-pencil"></i> Edit</button>

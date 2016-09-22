@@ -17,6 +17,18 @@ var EventComponent = (function () {
         this.onCancel = new core_1.EventEmitter();
         this.onSave = new core_1.EventEmitter();
     }
+    Object.defineProperty(EventComponent.prototype, "event", {
+        get: function () {
+            return this._event;
+        },
+        set: function (v) {
+            this._event = v;
+            this._event.startDate = this._event.startDate.substring(0, 10);
+            this._event.endDate = this._event.endDate.substring(0, 10);
+        },
+        enumerable: true,
+        configurable: true
+    });
     EventComponent.prototype.save = function () {
         var _this = this;
         if (this.event.id === undefined) {
@@ -35,7 +47,7 @@ var EventComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', event_model_1.Event)
-    ], EventComponent.prototype, "event", void 0);
+    ], EventComponent.prototype, "event", null);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)

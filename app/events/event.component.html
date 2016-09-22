@@ -16,7 +16,7 @@
     <div class="form-group">
         <label>Start Date:</label>
         <input id="eventStartDate" type="text" class="form-control" placeholder="Start Date" required [(ngModel)]="event.startDate"
-            name="eventStartDate" #startDate="ngModel">
+            name="eventStartDate" #startDate="ngModel" datepicker>
         <div [hidden]="startDate.valid || startDate.pristine" class="alert alert-danger">
             Start date is required
         </div>
@@ -24,7 +24,7 @@
     <div class="form-group">
         <label>End Date:</label>
         <input id="eventEndDate" type="text" class="form-control" placeholder="End Date" required [(ngModel)]="event.endDate" name="eventEndDate"
-            #endDate="ngModel">
+            #endDate="ngModel" datepicker>
         <div [hidden]="endDate.valid || endDate.pristine" class="alert alert-danger">
             Start date is required
         </div>

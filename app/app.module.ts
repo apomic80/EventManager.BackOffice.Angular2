@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './shared/menu.component';
 import { EventsComponent } from './events/events.component';
 import { EventComponent } from './events/event.component';
+import { DatePipe } from './shared/date.pipe';
+import { DatepickerDirective } from './shared/datepicker.directive';
 
 @NgModule({
   imports: [ BrowserModule, FormsModule, HttpModule ],
-  declarations: [ AppComponent, MenuComponent, EventsComponent, EventComponent ],
+  declarations: [ AppComponent, MenuComponent, EventsComponent, EventComponent, DatePipe, DatepickerDirective ],
   bootstrap: [ AppComponent]
 })
 export class AppModule { }

@@ -10,7 +10,18 @@ import { EventsService } from './events.services';
 })
 export class EventComponent {
 
-    @Input() event: Event;
+    private _event : Event;
+
+    @Input()
+    public get event() : Event {
+        return this._event;
+    }
+    public set event(v : Event) {
+        this._event = v;
+        this._event.startDate =  this._event.startDate.substring(0, 10);
+        this._event.endDate = this._event.endDate.substring(0, 10);
+    }
+
     @Output() onCancel = new EventEmitter();
     @Output() onSave = new EventEmitter();
     errorMessage: string;

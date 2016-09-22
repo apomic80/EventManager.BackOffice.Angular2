@@ -16,13 +16,15 @@ var app_component_1 = require('./app.component');
 var menu_component_1 = require('./shared/menu.component');
 var events_component_1 = require('./events/events.component');
 var event_component_1 = require('./events/event.component');
+var date_pipe_1 = require('./shared/date.pipe');
+var datepicker_directive_1 = require('./shared/datepicker.directive');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, menu_component_1.MenuComponent, events_component_1.EventsComponent, event_component_1.EventComponent],
+            declarations: [app_component_1.AppComponent, menu_component_1.MenuComponent, events_component_1.EventsComponent, event_component_1.EventComponent, date_pipe_1.DatePipe, datepicker_directive_1.DatepickerDirective],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
