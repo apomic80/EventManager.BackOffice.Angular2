@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'em-app',
-    template: '<h1>Event Manager Backoffice</h1>'
+    templateUrl: 'app.component.html',
 })
-export class AppComponent { }
+export class AppComponent 
+{ 
+
+}
