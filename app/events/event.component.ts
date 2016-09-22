@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Event } from './event.model';
 
 @Component({
     moduleId: module.id,
@@ -7,6 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class EventComponent { 
 
+    @Input() event: Event;
     @Output() onCancel = new EventEmitter();
 
     cancel() {

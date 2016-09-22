@@ -16,9 +16,9 @@
         <td>{{ event.endDate }}</td>
         <td>{{ event.visible }}</td>
         <td>
-            <button class="btn btn-small btn-warning"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+            <button class="btn btn-small btn-warning" (click)="editEvent(event)"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
             <button class="btn btn-small btn-danger"><i class="glyphicon glyphicon-remove"></i> Delete</button>
         </td>
     </tr>
 </table>
-<em-event *ngIf="formVisible" (onCancel)="hideForm()"></em-event>
+<em-event *ngIf="formVisible" (onCancel)="hideForm()" [event]="currentEvent"></em-event>

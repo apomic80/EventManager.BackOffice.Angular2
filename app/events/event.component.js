@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var event_model_1 = require('./event.model');
 var EventComponent = (function () {
     function EventComponent() {
         this.onCancel = new core_1.EventEmitter();
@@ -16,6 +17,10 @@ var EventComponent = (function () {
     EventComponent.prototype.cancel = function () {
         this.onCancel.emit();
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', event_model_1.Event)
+    ], EventComponent.prototype, "event", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)

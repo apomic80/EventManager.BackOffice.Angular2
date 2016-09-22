@@ -26,6 +26,10 @@ var EventsComponent = (function () {
     EventsComponent.prototype.showForm = function () {
         this.formVisible = true;
     };
+    EventsComponent.prototype.editEvent = function (event) {
+        this.currentEvent = event;
+        this.showForm();
+    };
     EventsComponent.prototype.loadPlayers = function () {
         var _this = this;
         this.service.getEvents()
