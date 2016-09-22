@@ -10,16 +10,20 @@ import { EventsService } from './events.services';
 })
 export class EventComponent {
 
-    private _event : Event;
+    private _event: Event;
 
     @Input()
-    public get event() : Event {
+    public get event(): Event {
         return this._event;
     }
-    public set event(v : Event) {
+    public set event(v: Event) {
         this._event = v;
-        this._event.startDate =  this._event.startDate.substring(0, 10);
-        this._event.endDate = this._event.endDate.substring(0, 10);
+        if (this._event.startDate != undefined) {
+            this._event.startDate = this._event.startDate.substring(0, 10);
+        }
+        if (this._event.endDate != undefined) {
+            this._event.endDate = this._event.endDate.substring(0, 10);
+        }
     }
 
     @Output() onCancel = new EventEmitter();
@@ -27,7 +31,7 @@ export class EventComponent {
     errorMessage: string;
 
     constructor(private service: EventsService) {
-        
+
     }
 
     save() {
@@ -35,14 +39,14 @@ export class EventComponent {
             console.log('create ' + JSON.stringify(this.event));
             this.service.createEvent(this.event)
                 .subscribe(
-                    event => { console.log('evento creto:' + JSON.stringify(event)), this.onSave.emit(); },
-                    error => this.errorMessage = error);
+                event => { console.log('evento creto:' + JSON.stringify(event)), this.onSave.emit(); },
+                error => this.errorMessage = error);
         }
         else {
             this.service.updateEvent(this.event)
                 .subscribe(
-                    event => { console.log('evento modificato:' + JSON.stringify(event)), this.onSave.emit(); },
-                    error => this.errorMessage = error);
+                event => { console.log('evento modificato:' + JSON.stringify(event)), this.onSave.emit(); },
+                error => this.errorMessage = error);
         }
     }
 

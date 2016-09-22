@@ -23,8 +23,12 @@ var EventComponent = (function () {
         },
         set: function (v) {
             this._event = v;
-            this._event.startDate = this._event.startDate.substring(0, 10);
-            this._event.endDate = this._event.endDate.substring(0, 10);
+            if (this._event.startDate != undefined) {
+                this._event.startDate = this._event.startDate.substring(0, 10);
+            }
+            if (this._event.endDate != undefined) {
+                this._event.endDate = this._event.endDate.substring(0, 10);
+            }
         },
         enumerable: true,
         configurable: true
