@@ -12,6 +12,10 @@ const appRoutes: Routes = [
   {
     path: 'speakers',
     component: SpeakersComponent
+  },
+  {
+      path: '',
+      component: EventsComponent
   }
 ];
 

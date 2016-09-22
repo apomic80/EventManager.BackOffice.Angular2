@@ -10,6 +10,10 @@ var appRoutes = [
     {
         path: 'speakers',
         component: speakers_component_1.SpeakersComponent
+    },
+    {
+        path: '',
+        component: events_component_1.EventsComponent
     }
 ];
 exports.routing = router_1.RouterModule.forRoot(appRoutes);
