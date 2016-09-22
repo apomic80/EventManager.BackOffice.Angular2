@@ -1,24 +1,28 @@
-<button class="btn btn-large btn-primary margin-bottom-md" (click)="showForm()"><i class="glyphicon glyphicon-plus"></i> Create Event</button>
-
-<table class="table table-responsive table-striped table-hover table-">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Visible</th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let event of eventList">
-        <td>{{ event.id }}</td>
-        <td>{{ event.name }}</td>
-        <td>{{ event.startDate }}</td>
-        <td>{{ event.endDate }}</td>
-        <td>{{ event.visible }}</td>
-        <td>
-            <button class="btn btn-small btn-warning" (click)="editEvent(event)"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
-            <button class="btn btn-small btn-danger"><i class="glyphicon glyphicon-remove"></i> Delete</button>
-        </td>
-    </tr>
-</table>
-<em-event *ngIf="formVisible" (onCancel)="hideForm()" [event]="currentEvent"></em-event>
+<div *ngIf="!formVisible">
+    <button class="btn btn-large btn-primary margin-bottom-md" (click)="createEvent()"><i class="glyphicon glyphicon-plus"></i> Create Event</button>
+     <div [hidden]="errorMessage == undefined" class="alert alert-danger">
+        {{ errorMessage }}
+     </div>
+    <table class="table table-responsive table-striped table-hover table-">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Visible</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let event of eventList">
+            <td>{{ event.id }}</td>
+            <td>{{ event.name }}</td>
+            <td>{{ event.startDate }}</td>
+            <td>{{ event.endDate }}</td>
+            <td>{{ event.visible }}</td>
+            <td>
+                <button class="btn btn-small btn-warning" (click)="editEvent(event)"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+                <button class="btn btn-small btn-danger" (click)="deleteEvent(event)"><i class="glyphicon glyphicon-remove"></i> Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<em-event *ngIf="formVisible" (onCancel)="hideForm()" (onSave)="hideForm()" [event]="currentEvent"></em-event>

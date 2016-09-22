@@ -1,13 +1,46 @@
-<form>
+<form novalidate>
     <h2>Event {{ event.id }} - {{ event.name }}</h2>
     <div class="form-group">
         <label for="eventName">Name:</label>
-        <input id="eventName" type="text" class="form-control" placeholder="Event Name">
+        <input id="eventName" type="text" class="form-control" placeholder="Event Name" required [(ngModel)]="event.name" name="eventName"
+            #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+            Name is required
+        </div>
     </div>
     <div class="form-group">
         <label for="eventDescription">Description:</label>
-        <input id="eventDescription" type="text" class="form-control" placeholder="Event Description">
+        <textarea id="eventDescription" rows="5" class="form-control" placeholder="Event Description" [(ngModel)]="event.description"
+            name="eventDescription"></textarea>
     </div>
-    <button class="btn btn-default"><i class="glyphicon glyphicon-ok"></i> Save</button>
+    <div class="form-group">
+        <label>Start Date:</label>
+        <input id="eventStartDate" type="text" class="form-control" placeholder="Start Date" required [(ngModel)]="event.startDate"
+            name="eventStartDate" #startDate="ngModel">
+        <div [hidden]="startDate.valid || startDate.pristine" class="alert alert-danger">
+            Start date is required
+        </div>
+    </div>
+    <div class="form-group">
+        <label>End Date:</label>
+        <input id="eventEndDate" type="text" class="form-control" placeholder="End Date" required [(ngModel)]="event.endDate" name="eventEndDate"
+            #endDate="ngModel">
+        <div [hidden]="endDate.valid || endDate.pristine" class="alert alert-danger">
+            Start date is required
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="eventLocation">Location:</label>
+        <input id="eventLocation" type="text" class="form-control" placeholder="Event Location" [(ngModel)]="event.location" name="eventLocation">
+    </div>
+     <div class="checkbox">
+        <label>
+            <input id="eventVisible" name="eventVisible" type="checkbox" [(ngModel)]="event.visible"> Visible
+        </label>
+    </div>
+    <button class="btn btn-default" (click)="save()"><i class="glyphicon glyphicon-ok"></i> Save</button>
     <button class="btn btn-default" (click)="cancel()"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
 </form>
+<div [hidden]="errorMessage == undefined" class="alert alert-danger">
+    {{ errorMessage }}
+</div>

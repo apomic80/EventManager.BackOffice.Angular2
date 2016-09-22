@@ -10,10 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var event_model_1 = require('./event.model');
+var events_services_1 = require('./events.services');
 var EventComponent = (function () {
-    function EventComponent() {
+    function EventComponent(service) {
+        this.service = service;
         this.onCancel = new core_1.EventEmitter();
+        this.onSave = new core_1.EventEmitter();
     }
+    EventComponent.prototype.save = function () {
+        var _this = this;
+        if (this.event.id === undefined) {
+            console.log('create ' + JSON.stringify(this.event));
+            this.service.createEvent(this.event)
+                .subscribe(function (event) { console.log('evento creto:' + JSON.stringify(event)), _this.onSave.emit(); }, function (error) { return _this.errorMessage = error; });
+        }
+        else {
+            this.service.updateEvent(this.event)
+                .subscribe(function (event) { console.log('evento modificato:' + JSON.stringify(event)), _this.onSave.emit(); }, function (error) { return _this.errorMessage = error; });
+        }
+    };
     EventComponent.prototype.cancel = function () {
         this.onCancel.emit();
     };
@@ -25,13 +40,18 @@ var EventComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', Object)
     ], EventComponent.prototype, "onCancel", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], EventComponent.prototype, "onSave", void 0);
     EventComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'em-event',
-            templateUrl: 'event.component.html'
+            templateUrl: 'event.component.html',
+            providers: [events_services_1.EventsService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [events_services_1.EventsService])
     ], EventComponent);
     return EventComponent;
 }());
