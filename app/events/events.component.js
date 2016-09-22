@@ -18,7 +18,14 @@ var EventsComponent = (function () {
          ];*/
         this.service = service;
         this.loadPlayers();
+        this.hideForm();
     }
+    EventsComponent.prototype.hideForm = function () {
+        this.formVisible = false;
+    };
+    EventsComponent.prototype.showForm = function () {
+        this.formVisible = true;
+    };
     EventsComponent.prototype.loadPlayers = function () {
         var _this = this;
         this.service.getEvents()

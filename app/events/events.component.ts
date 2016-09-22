@@ -11,6 +11,7 @@ import { EventsService } from './events.services';
 export class EventsComponent {
 
     eventList: Event[];
+    formVisible: boolean;
 
     constructor(private service: EventsService) {
        /* this.eventList = [
@@ -19,12 +20,20 @@ export class EventsComponent {
         ];*/
 
         this.loadPlayers();
+        this.hideForm();
+    }
+
+    hideForm() {
+        this.formVisible = false;
+    }
+
+    showForm() {
+        this.formVisible = true;
     }
 
     loadPlayers() {
         this.service.getEvents()
             .subscribe(arg => this.eventList = arg);
-        
     }
 
 }

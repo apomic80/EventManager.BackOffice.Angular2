@@ -1,6 +1,6 @@
-<button class="btn btn-large btn-primary margin-bottom-md"><i class="glyphicon glyphicon-plus"></i> Create Event</button>
+<button class="btn btn-large btn-primary margin-bottom-md" (click)="showForm()"><i class="glyphicon glyphicon-plus"></i> Create Event</button>
 
-<table class="table table-responsive table-striped table-hover">
+<table class="table table-responsive table-striped table-hover table-">
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -21,3 +21,4 @@
         </td>
     </tr>
 </table>
+<em-event *ngIf="formVisible" (onCancel)="hideForm()"></em-event>

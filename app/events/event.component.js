@@ -9,23 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var http_1 = require('@angular/http');
-var app_component_1 = require('./app.component');
-var menu_component_1 = require('./shared/menu.component');
-var events_component_1 = require('./events/events.component');
-var event_component_1 = require('./events/event.component');
-var AppModule = (function () {
-    function AppModule() {
+var EventComponent = (function () {
+    function EventComponent() {
+        this.onCancel = new core_1.EventEmitter();
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, menu_component_1.MenuComponent, events_component_1.EventsComponent, event_component_1.EventComponent],
-            bootstrap: [app_component_1.AppComponent]
+    EventComponent.prototype.cancel = function () {
+        this.onCancel.emit();
+    };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], EventComponent.prototype, "onCancel", void 0);
+    EventComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'em-event',
+            templateUrl: 'event.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], EventComponent);
+    return EventComponent;
 }());
-exports.AppModule = AppModule;
+exports.EventComponent = EventComponent;
